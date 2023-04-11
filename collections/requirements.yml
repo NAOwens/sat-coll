@@ -1,0 +1,13 @@
+---
+collections:
+- name: my_namespace.my_other_collection
+  source: https://galaxy.ansible.com
+  
+# With just the collection name
+#  - name: awx.awx
+#    source: https://galaxy.ansible.com
+
+# With the collection name, version, and source options
+#- name: my_namespace.my_other_collection
+#  version: 'version range identifiers (default: ``*``)'
+#  source: 'The Galaxy URL to pull the collection from (default: ``--api-server`` from cmdline)'%

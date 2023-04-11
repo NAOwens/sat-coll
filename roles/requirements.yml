@@ -1,0 +1,5 @@
+---
+# from a repository
+#- src: git@git@github.com:username/role_some_role
+#  name: role_some_role
+#  scm: git
