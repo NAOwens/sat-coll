@@ -9,12 +9,12 @@
     sat_url: '{{ server_url }}'
 
   tasks:
-  - name: Create host collection
+  - name: "Create Foo host collection"
     theforeman.foreman.host_collection:
-      username: '{{ sat_user }}'
-      password: '{{ sat_pw }}'
-      server_url: '{{ sat_url }}'
+      username: "{{ sat_user }}"
+      password: "{{ sat_pw }}"
+      server_url: "{{ sat_url }}"
       name: "NORMFoo"
       description: "Foo host collection for Foo servers"
       organization: "Shadow Man"
-      state: present
+      state: present 
