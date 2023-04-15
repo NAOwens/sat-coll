@@ -1,6 +1,6 @@
 ---
 - name: Project sat-coll
-  hosts: 
+  hosts: sat6.shadowman.dev 
   gather_facts: no
 
   vars:
