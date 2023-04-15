@@ -9,7 +9,6 @@
     sat_url: '{{ server_url }}'
 
   tasks:
-
   - name: Create host collection
     theforeman.foreman.host_collection:
       username: '{{ sat_user }}'
@@ -19,5 +18,3 @@
       description: "Foo host collection for Foo servers"
       organization: "Shadow Man"
       state: present
-      tags:
-        - makehostcoll 
