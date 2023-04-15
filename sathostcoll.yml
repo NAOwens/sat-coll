@@ -1,7 +1,7 @@
 ---
 - name: Project sat-coll
-  hosts: sat6.shadowman.dev 
-  gather_facts: yes
+  hosts: localhost
+  gather_facts: no
 
   vars:
     sat_user: "{{ username }}"
