@@ -4,9 +4,9 @@
   gather_facts: no
 
   vars:
-    sat_user: '{{ username }}'
-    sat_pw: '{{ password }}'
-    sat_url: '{{ server_url }}'
+    sat_user: "{{ username }}"
+    sat_pw: "{{ password }}"
+    sat_url: "{{ server_url }}"
 
   tasks:
   - name: "Create Foo host collection"
