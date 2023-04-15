@@ -10,14 +10,14 @@
 
   tasks:
 
-    - name: "Create host collection"
-      theforeman.foreman.host_collection:
-        username: '{{ sat_user }}'
-        password: '{{ sat_pw }}'
-        server_url: '{{ sat_url }'
-        name: "NORMFoo"
-        description: "Foo host collection for Foo servers"
-        organization: "Shadow Man"
-        state: present
+  - name: "Create host collection"
+    theforeman.foreman.host_collection:
+      username: '{{ sat_user }}'
+      password: '{{ sat_pw }}'
+      server_url: '{{ sat_url }'
+      name: "NORMFoo"
+      description: "Foo host collection for Foo servers"
+      organization: "Shadow Man"
+      state: present
       tags:
         - makehostcoll 
