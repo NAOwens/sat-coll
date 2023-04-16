@@ -18,3 +18,9 @@
       description: "Foo host collection for Foo servers"
       organization: "Shadow Man"
       state: present 
+  
+  - name: "Display hosts to be added"
+    ansible.builtin.debug:
+      msg: "{{ survey_add_hosts }}"
+#      msg: "{{ item }}"
+#    loop: "{{ survey_add_hosts | split ('\n')}}"
