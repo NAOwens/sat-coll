@@ -10,7 +10,7 @@
 
   tasks:
   - name: "Create Foo host collection"
-    theforeman.foreman.host_collection:
+    redhat.satellite.host_collection:
       username: "{{ sat_user }}"
       password: "{{ sat_pw }}"
       server_url: "{{ sat_url }}"
