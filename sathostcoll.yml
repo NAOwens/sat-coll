@@ -23,3 +23,17 @@
     ansible.builtin.debug:
       msg: "{{ item }}"
     loop: "{{ survey_add_hosts | split ('\n')}}"
+
+# create separate role or task??
+#  - name: "get rest api info from Satellite"
+#    ansible.builtin.uri:
+#      url: "{{ sat_url }}/api/v2/hosts/{{ items }}"
+#      method: GET
+#      user: "{{ sat_user }}"
+#      password: "{{ sat_pw }}"
+#      force_basic_auth: true
+#      validate_certs: false
+#    register: restdata
+#  - name: "get rest data"
+#    ansible.builtin.debug:
+#      msg: "{{ restdata }}"
