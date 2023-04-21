@@ -25,11 +25,12 @@
     ansible.builtin.shell:
       cmd: hammer --no-headers host-collection create --name "{{ coll_name }}" --organization "{{ org_name }}"
 
+  - name: Add hosts to hosts collections
     ansible.builtin.shell:
       cmd: hammer --no-headers host-collection add-host --hosts "{{ item }}" --name "{{ coll_name }}" --organization "{{ org_name }}"
-    with_items: "{{ survey_add_hosts | split ('\n') }}"
-      
-  - name: "Display hosts to be added"
-    ansible.builtin.debug:
-      msg: "{{ item }}"
     loop: "{{ survey_add_hosts | split ('\n') }}"
+      
+#  - name: "Display hosts to be added"
+#    ansible.builtin.debug:
+#      msg: "{{ item }}"
+#    loop: "{{ survey_add_hosts | split ('\n') }}"
