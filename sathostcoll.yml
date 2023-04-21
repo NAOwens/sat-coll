@@ -1,15 +1,12 @@
 ---
 - name: Playbook to create host collection in Satellite from survey text
-  hosts: localhost
+  hosts: sat6.shadowman.dev
   gather_facts: no
 
   vars:
 #    sat_user: "{{ username }}"
 #    sat_pw: "{{ password }}"
 #    sat_url: "{{ server_url }}"
-    sat_user: "{{ foreman_user }}"
-    sat_pw: "{{ foreman_password }}"
-    sat_url: "{{ foreman_server }}"
     coll_name: "{{ survey_coll_name }}"
     org_name: "Shadow Man"
 
@@ -26,7 +23,7 @@
 
   - name: Create host collection in Satellite using command-line 
     ansible.builtin.shell:
-      cmd: /usr/bin/hammer --no-headers host-collection create --name "{{ coll_name }}" --organization "{{ org_name }}"
+      cmd: hammer --no-headers host-collection create --name "{{ coll_name }}" --organization "{{ org_name }}"
       
   - name: "Display hosts to be added"
     ansible.builtin.debug:
