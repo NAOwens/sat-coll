@@ -22,7 +22,7 @@
   - name: "Display hosts to be added"
     ansible.builtin.debug:
       msg: "{{ item }}"
-    loop: "{{ survey_add_hosts | split ('\n')}}"
+    loop: "{{ survey_add_hosts | split ('\n') }}"
 
 # create separate role or task??
 #  - name: "get rest api info from Satellite"
