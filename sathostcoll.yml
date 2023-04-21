@@ -1,39 +1,34 @@
 ---
-- name: Project sat-coll
+- name: Playbook to create host collection in Satellite from survey text
   hosts: localhost
   gather_facts: no
 
   vars:
-    sat_user: "{{ username }}"
-    sat_pw: "{{ password }}"
-    sat_url: "{{ server_url }}"
+#    sat_user: "{{ username }}"
+#    sat_pw: "{{ password }}"
+#    sat_url: "{{ server_url }}"
+    sat_user: "{{ foreman_user }}"
+    sat_pw: "{{ foreman_password }}"
+    sat_url: "{{ foreman_server }}"
+    coll_name: "{{ survey_coll_name }}"
+    org_name: "Shadow Man"
 
   tasks:
-  - name: "Create Foo host collection"
-    redhat.satellite.host_collection:
-      username: "{{ sat_user }}"
-      password: "{{ sat_pw }}"
-      server_url: "{{ sat_url }}"
-      name: "NORMFoo"
-      description: "Foo host collection for Foo servers"
-      organization: "Shadow Man"
-      state: present 
-  
+#  - name: "Create Foo host collection"
+#    redhat.satellite.host_collection:
+#      username: "{{ sat_user }}"
+#      password: "{{ sat_pw }}"
+#      server_url: "{{ sat_url }}"
+#      name: "NORMFoo"
+#      description: "Foo host collection for Foo servers"
+#      organization: "Shadow Man"
+#      state: present 
+
+  - name: Create host collection in Satellite using command-line 
+    ansible.builtin.shell:
+      cmd: sudo hammer --no-headers host-collection create --name "{{ coll_name }}" --organization "{{ org_name }}"
+      
   - name: "Display hosts to be added"
     ansible.builtin.debug:
       msg: "{{ item }}"
     loop: "{{ survey_add_hosts | split ('\n') }}"
-
-# create separate role or task??
-#  - name: "get rest api info from Satellite"
-#    ansible.builtin.uri:
-#      url: "{{ sat_url }}/api/v2/hosts/{{ items }}"
-#      method: GET
-#      user: "{{ sat_user }}"
-#      password: "{{ sat_pw }}"
-#      force_basic_auth: true
-#      validate_certs: false
-#    register: restdata
-#  - name: "get rest data"
-#    ansible.builtin.debug:
-#      msg: "{{ restdata }}"
