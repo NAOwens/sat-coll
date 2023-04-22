@@ -1,8 +1,4 @@
 ---
-- name: Playbook to add hosts to host collection
-  hosts: sat6.shadowman.dev
-  gather_facts: no
-
   vars:
     coll_name: "{{ survey_coll_name }}"
     org_name: "Shadow Man"
