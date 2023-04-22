@@ -13,5 +13,5 @@
       cmd: hammer --no-headers host-collection create --name "{{ coll_name }}" --organization "{{ org_name }}"
   
   - name: Call add hosts to collection task
-    ansible.builtin.include_tasks: addhostcoll-task.yml
+    ansible.builtin.include_tasks: addhostcoll_task.yml
     loop: "{{ survey_add_hosts | split ('\n') }}"
