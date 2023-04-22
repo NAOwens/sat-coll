@@ -11,16 +11,6 @@
     org_name: "Shadow Man"
 
   tasks:
-#  - name: "Create Foo host collection"
-#    redhat.satellite.host_collection:
-#      username: "{{ sat_user }}"
-#      password: "{{ sat_pw }}"
-#      server_url: "{{ sat_url }}"
-#      name: "NORMFoo"
-#      description: "Foo host collection for Foo servers"
-#      organization: "Shadow Man"
-#      state: present 
-
   - name: Create host collection {{ coll_name }} in Satellite
     ansible.builtin.shell:
       cmd: hammer --no-headers host-collection create --name "{{ coll_name }}" --organization "{{ org_name }}"
@@ -29,8 +19,3 @@
     ansible.builtin.shell:
       cmd: hammer --no-headers host-collection add-host --hosts "{{ item | replace(' ','') }}" --name "{{ coll_name }}" --organization "{{ org_name }}"
     loop: "{{ survey_add_hosts | split ('\n') }}"
-      
-#  - name: "Display hosts to be added"
-#    ansible.builtin.debug:
-#      msg: "{{ item }}"
-#    loop: "{{ survey_add_hosts | split ('\n') }}"
