@@ -5,38 +5,42 @@ Create satellite collection and populate with hosts
 
 Requirements
 ------------
+addsathostcoll.yml - This playbook will create a temporary satellite host collection and add hosts to it.  This playbook should be run from Ansible Automation Platform because the hosts to be added to the host collection will be provided using answer type=Textarea in a survey.
 
+addhostcoll_task.yml - This is a task that is called by addsathostcoll.yml
+
+delsathostcoll.yml - This playbook will delete a satellite host collection.
 
 sat-coll Variables
 --------------
+coll_name - This is the name of the temporary Satellite Host Collection that will be created. Can be a survey variable.  ie: survey_coll_name
 
-A description of the settable variables for this project should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+org_name - This is the name of the Satellite Organization where the Host Collection will be created.  Can be a survey variable.
+
+survey_add_hosts - survey variable used in addsathostcoll.yml to enter hosts that will be added to the host collection
 
 Dependencies
 ------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+The project mainly uses ansible.builtin collections.
 
 sat-coll Project Playbook
 ----------------
+- name: Playbook to create host collection in Satellite from survey text
+  hosts: sat6.shadowman.dev
+  gather_facts: no
 
-Including an example of how to use your project (for instance, with variables passed in as parameters) is always nice for users too:
+  vars:
+    coll_name: "{{ survey_coll_name }}"
+    org_name: "Shadow Man"
 
-    - name: Project sat-coll
-      hosts: all
-      gather_facts: no
-    
-      tasks:
-     - name: some role
-        include_role:
-          name: some role
-          apply:
-            tags:
-              - some tag
-        vars:
-          # add variables if needed else delete entire section
-        tags:
-          - always
+  tasks:
+  - name: Create host collection "{{ coll_name }}" in Satellite
+    ansible.builtin.shell:
+      cmd: hammer --no-headers host-collection create --name "{{ coll_name }}" --organization "{{ org_name }}"
+  
+  - name: Call add hosts to collection task
+    ansible.builtin.include_tasks: addhostcoll_task.yml
+    loop: "{{ survey_add_hosts | split ('\n') }}"
 
 License
 -------
@@ -46,4 +50,4 @@ GPL
 Author Information
 ------------------
 
-An optional section for the project authors to include contact information, or a website (HTML is not allowed).
+Norman Owens - Norman.Owens@redhat.com
