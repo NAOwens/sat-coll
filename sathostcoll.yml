@@ -4,9 +4,6 @@
   gather_facts: no
 
   vars:
-#    sat_user: "{{ username }}"
-#    sat_pw: "{{ password }}"
-#    sat_url: "{{ server_url }}"
     coll_name: "{{ survey_coll_name }}"
     org_name: "Shadow Man"
 
