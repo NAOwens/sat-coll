@@ -1,0 +1,3 @@
+---
+coll_name: "{{ survey_coll_name }}"
+org_name: "Shadow Man"
