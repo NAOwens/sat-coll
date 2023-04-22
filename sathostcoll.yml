@@ -6,7 +6,7 @@
   vars:
 
   tasks:
-  - name: Create host collection {{ coll_name }} in Satellite
+  - name: Create host collection "{{ coll_name }}" in Satellite
     ansible.builtin.shell:
       cmd: hammer --no-headers host-collection create --name "{{ coll_name }}" --organization "{{ org_name }}"
 
