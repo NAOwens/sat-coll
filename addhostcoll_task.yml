@@ -4,18 +4,14 @@
     cmd: hammer --no-headers host list --organization "{{ org_name }}" --fields name --search "{{ item | replace(' ','') }}"
   register: check_insat
   ignore_errors: true
+  changed_when: false
 
 - name: Check if host is already in host collection
   ansible.builtin.shell:
     cmd:  hammer --no-headers host-collection host --name "{{ coll_name }}" --organization "{{ org_name }}" --fields name | grep "{{ item | replace(' ','') }}"
   register: check_inhostcoll
   ignore_errors: true
-
-- name: Print the registered vars
-  ansible.builtin.debug:
-    msg:
-      - Check Satellite: "{{ check_insat.stdout }}"
-      - Check HostColl: "{{ check_inhostcoll.stdout }}"
+  changed_when: false
 
 - name: Add hosts to hosts collections
   ansible.builtin.shell:
