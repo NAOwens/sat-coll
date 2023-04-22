@@ -1,0 +1,17 @@
+---
+- name: Playbook to create host collection in Satellite from survey text
+  hosts: sat6.shadowman.dev
+  gather_facts: no
+
+  vars:
+    coll_name: "{{ survey_coll_name }}"
+    org_name: "Shadow Man"
+
+  tasks:
+  - name: Create host collection "{{ coll_name }}" in Satellite
+    ansible.builtin.shell:
+      cmd: hammer --no-headers host-collection create --name "{{ coll_name }}" --organization "{{ org_name }}"
+  
+  - name: Call add hosts to collection task
+    ansible.builtin.include_tasks: addhostcoll-task.yml
+    loop: "{{ survey_add_hosts | split ('\n') }}"
