@@ -4,9 +4,7 @@
   gather_facts: no
 
   vars:
-    coll_name: "{{ survey_coll_name }}"
-    org_name: "Shadow Man"
-
+  
   tasks:
   - name: Create host collection "{{ coll_name }}" in Satellite
     ansible.builtin.shell:
