@@ -1,12 +1,23 @@
 ---
-#  - name: Check if host exists in Satellite
-#    ansible.builtin.shell:
-#      cmd: hammer --no-headers host list --organization "{{ org_name }}" --fields name --search "{{ item | replace(' ','') }}"
+- name: Check if host exists in Satellite
+  ansible.builtin.shell:
+    cmd: hammer --no-headers host list --organization "{{ org_name }}" --fields name --search "{{ item | replace(' ','') }}"
+  register: check_insat
 
-#  - name: Check if host is already in host collection
-#    ansible.builtin.shell:
-#      cmd:  hammer --no-headers host-collection host --name "{{ coll_name }}" --organization "{{ org_name }}" --fields name | grep "{{ item | replace(' ','') }}"
+- name: Check if host is already in host collection
+  ansible.builtin.shell:
+    cmd:  hammer --no-headers host-collection host --name "{{ coll_name }}" --organization "{{ org_name }}" --fields name | grep "{{ item | replace(' ','') }}"
+  register: check_inhostcoll
+
+- name: Print the registered vars
+  ansible.buildin.debug:
+    msg:
+      - Check Satellite: {{ check_insat.stdout }}
+      - Check HostColl: {{ check_inhostcoll.stdout }}
 
 - name: Add hosts to hosts collections
   ansible.builtin.shell:
     cmd: hammer --no-headers host-collection add-host --hosts "{{ item | replace(' ','') }}" --name "{{ coll_name }}" --organization "{{ org_name }}"
+  when: 
+    - check_insat.stdout != "" 
+    - check_inhostcoll.stdout == ""
