@@ -12,7 +12,7 @@
   ignore_errors: true
 
 - name: Print the registered vars
-  ansible.buildin.debug:
+  ansible.builtin.debug:
     msg:
       - Check Satellite: "{{ check_insat.stdout }}"
       - Check HostColl: "{{ check_inhostcoll.stdout }}"
