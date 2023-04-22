@@ -11,3 +11,5 @@
   - name: Delete host collection "{{ coll_name }}" in Satellite
     ansible.builtin.shell:
       cmd: hammer --no-headers host-collection delete --name "{{ coll_name }}" --organization "{{ org_name }}"
+    tags:
+      - delcoltag

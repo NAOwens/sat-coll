@@ -11,7 +11,11 @@
   - name: Create host collection "{{ coll_name }}" in Satellite
     ansible.builtin.shell:
       cmd: hammer --no-headers host-collection create --name "{{ coll_name }}" --organization "{{ org_name }}"
+    tags:
+      - addcolltag
   
   - name: Call add hosts to collection task
     ansible.builtin.include_tasks: addhostcoll_task.yml
     loop: "{{ survey_add_hosts | split ('\n') }}"
+    tags:
+      - addhoststag
