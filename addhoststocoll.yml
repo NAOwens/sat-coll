@@ -8,13 +8,13 @@
     org_name: "Shadow Man"
 
   tasks:
-  - name: Check if host exists in Satellite
-    ansible.builtin.shell:
-      cmd: hammer --no-headers host list --organization "{{ org_name }}" --fields name --search "{{ item | replace(' ','') }}"
+#  - name: Check if host exists in Satellite
+#    ansible.builtin.shell:
+#      cmd: hammer --no-headers host list --organization "{{ org_name }}" --fields name --search "{{ item | replace(' ','') }}"
 
-  - name: Check if host is already in host collection
-    ansible.builtin.shell:
-      cmd:  hammer --no-headers host-collection host --name "{{ coll_name }}" --organization "{{ org_name }}" --fields name | grep "{{ item | replace(' ','') }}"
+#  - name: Check if host is already in host collection
+#    ansible.builtin.shell:
+#      cmd:  hammer --no-headers host-collection host --name "{{ coll_name }}" --organization "{{ org_name }}" --fields name | grep "{{ item | replace(' ','') }}"
 
   - name: Add hosts to hosts collections
     ansible.builtin.shell:
