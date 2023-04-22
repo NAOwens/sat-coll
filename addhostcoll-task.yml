@@ -3,11 +3,13 @@
   ansible.builtin.shell:
     cmd: hammer --no-headers host list --organization "{{ org_name }}" --fields name --search "{{ item | replace(' ','') }}"
   register: check_insat
+  ignore_errors: true
 
 - name: Check if host is already in host collection
   ansible.builtin.shell:
     cmd:  hammer --no-headers host-collection host --name "{{ coll_name }}" --organization "{{ org_name }}" --fields name | grep "{{ item | replace(' ','') }}"
   register: check_inhostcoll
+  ignore_errors: true
 
 - name: Print the registered vars
   ansible.buildin.debug:
