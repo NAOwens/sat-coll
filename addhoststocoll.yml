@@ -4,6 +4,8 @@
   gather_facts: no
 
   vars:
+    coll_name: "{{ survey_coll_name }}"
+    org_name: "Shadow Man"
 
   tasks:
   - name: Check if host exists in Satellite
