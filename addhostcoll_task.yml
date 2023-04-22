@@ -5,6 +5,7 @@
   register: check_insat
   ignore_errors: true
   changed_when: false
+  no_log: true
 
 - name: Check if host is already in host collection
   ansible.builtin.shell:
@@ -12,6 +13,7 @@
   register: check_inhostcoll
   ignore_errors: true
   changed_when: false
+  no_log: true
 
 - name: Add hosts to hosts collections
   ansible.builtin.shell:
