@@ -1,9 +1,0 @@
----
-- name: Test the newly aded host group
-  hosts: foreman_hostcollection_normfoo1
-  gather_facts: no
-
-  tasks:
-  - name: check uname for each host in hostgroup foreman_hostcollection_normfoo1
-    ansible.builtin.shell:
-      cmd: uname -n
