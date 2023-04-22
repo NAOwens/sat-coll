@@ -14,8 +14,8 @@
 - name: Print the registered vars
   ansible.buildin.debug:
     msg:
-      - Check Satellite: {{ check_insat.stdout }}
-      - Check HostColl: {{ check_inhostcoll.stdout }}
+      - Check Satellite: "{{ check_insat.stdout }}"
+      - Check HostColl: "{{ check_inhostcoll.stdout }}"
 
 - name: Add hosts to hosts collections
   ansible.builtin.shell:
