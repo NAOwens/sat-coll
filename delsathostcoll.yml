@@ -17,7 +17,7 @@
 - name: Sync Inventory
   hosts: localhost
   connection: local
-  gather_facts: false
+  gather_facts: no
 
   vars:
     inventory_source_name: "Satellite Inventory"
