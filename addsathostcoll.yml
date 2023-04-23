@@ -3,10 +3,6 @@
   hosts: sat6.shadowman.dev
   gather_facts: no
 
-#  vars:
-#    coll_name: "{{ survey_coll_name }}"
-#    org_name: "Shadow Man"
-
   tasks:
   - name: Create host collection "{{ coll_name }}" in Satellite
     ansible.builtin.shell:
@@ -24,10 +20,6 @@
   hosts: localhost
   connection: local
   gather_facts: no
-
-#  vars:
-#    inventory_source_name: Sat6
-#    inventory_name: "Satellite Inventory"
 
   tasks: 
   - name: Update a single inventory source
