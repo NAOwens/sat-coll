@@ -20,8 +20,8 @@
   gather_facts: no
 
   vars:
-    inventory_source_name: "Satellite Inventory"
-    inventory_name: Sat6
+    inventory_source_name: Sat6
+    inventory_name: "Satellite Inventory"
 
   tasks: 
   - name: Update a single inventory source
