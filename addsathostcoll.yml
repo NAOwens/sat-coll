@@ -22,7 +22,7 @@
   gather_facts: no
 
   tasks: 
-  - name: Update a single inventory source
+  - name: Sync AAP Satellite inventory source
     ansible.controller.inventory_source_update:
       inventory_source: "{{ inventory_source_name }}"
       inventory: "{{ inventory_name }}"
