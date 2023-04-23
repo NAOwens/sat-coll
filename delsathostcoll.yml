@@ -13,3 +13,19 @@
       cmd: hammer --no-headers host-collection delete --name "{{ coll_name }}" --organization "{{ org_name }}"
     tags:
       - delcoltag
+
+- name: Sync Inventory
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    inventory_source_name: "Satellite Inventory"
+    inventory_name: Sat6
+
+  tasks: 
+  - name: Update a single inventory source
+    ansible.controller.inventory_source_update:
+      inventory_source: "{{ inventory_source_name }}"
+      inventory: "{{ inventory_name }}"
+      wait: true
