@@ -14,8 +14,24 @@
     tags:
       - addcolltag
   
-  - name: Call add hosts to collection task
+  - name: Call TASK to add hosts to collection
     ansible.builtin.include_tasks: addhostcoll_task.yml
     loop: "{{ survey_add_hosts | split ('\n') }}"
     tags:
       - addhoststag
+
+- name: Sync Inventory
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  vars:
+    inventory_source_name: Sat6
+    inventory_name: "Satellite Inventory"
+
+  tasks: 
+  - name: Update a single inventory source
+    ansible.controller.inventory_source_update:
+      inventory_source: "{{ inventory_source_name }}"
+      inventory: "{{ inventory_name }}"
+      wait: true
