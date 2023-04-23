@@ -14,7 +14,7 @@ delsathostcoll.yml - This playbook will delete a satellite host collection and t
 
 sat-coll Variables
 --------------
-coll_name - This is the name of the temporary Satellite Host Collection that will be created. Can be a survey variable.  ie: survey_coll_name
+coll_name - Name of the temporary Satellite Host Collection that will be created. Can be a survey variable.  ie: survey_coll_name
 
 org_name - This is the name of the Satellite Organization where the Host Collection will be created.  Can be a survey variable.
 

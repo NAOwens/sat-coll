@@ -1,0 +1,6 @@
+---
+
+coll_name: "{{ survey_coll_name }}"
+org_name: "Shadow Man"
+inventory_source_name: Sat6
+inventory_name: "Satellite Inventory"
