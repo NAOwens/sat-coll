@@ -2,7 +2,7 @@ sat-coll Project
 =========
 
 Create temporary satellite collection in Satellite, populate with hosts and sync Satellite Inventory in AAP.
-Delete temporary satellite collection in Satellite and sync Satellite Inventory in AAP.
+Can also delete temporary satellite collection in Satellite and sync Satellite Inventory in AAP.
 
 Requirements
 ------------
