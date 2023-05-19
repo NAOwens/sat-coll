@@ -1,6 +1,6 @@
 ---
 - name: Test workflow 
-  hosts: "foreman_hostcollection_{{ survey_coll_name }}"
+  hosts: "foreman_hostcollection_{{ survey_coll_name | lower }}"
   gather_facts: no
 
   tasks:
