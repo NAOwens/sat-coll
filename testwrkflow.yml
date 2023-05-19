@@ -5,4 +5,4 @@
 
   tasks:
   - name: ping the hosts passed in workflow from addhostcoll.yml
-    ansible.builtin.shell:
+    ansible.builtin.ping:
