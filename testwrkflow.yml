@@ -1,0 +1,8 @@
+---
+- name: Test workflow 
+  hosts: foreman_hostcollection_normfoo1
+  gather_facts: no
+
+  tasks:
+  - name: ping the hosts passed in workflow from addhostcoll.yml
+    ansible.builtin.shell:
