@@ -8,7 +8,7 @@ Requirements
 ------------
 addsathostcoll.yml - This playbook will create a temporary satellite host collection and add hosts to it.  This playbook should be run from Ansible Automation Platform because the hosts to be added to the host collection will be provided using answer type=Textarea in a survey.  This playbook essentially uses the survey as a sort of flat file.  This playbook can be used to create a temporary inventory that another playbook can use in a workflow.  By using satellite, the playbook can verify that the user entered valid hosts and by syncing the satellite inventory in AAP, another playbook in a workflow can use this temporary inventory.  
 
-addhostcoll_task.yml - This is a task that is called by addsathostcoll.yml.  This task performs the checks to verify that the hosts added in the survey exist in satellite and it makes sure that the user did not duplicate hosts.  It also addes the hosts to the newly created temporary satellite host collection.
+addhostcoll_task.yml - This is a task that is called by addsathostcoll.yml.  This task performs the checks to verify that the hosts added in the survey exist in satellite and it makes sure that the user did not duplicate hosts.  It also adds the hosts to the newly created temporary satellite host collection.
 
 delsathostcoll.yml - This playbook will delete a satellite host collection and then sync the satellite inventory in AAP.
 
