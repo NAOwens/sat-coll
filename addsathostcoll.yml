@@ -1,6 +1,6 @@
 ---
 - name: Playbook to create host collection in Satellite from survey text
-  hosts: sat6.shadowman.dev
+  hosts: sat.ofam.dev
   gather_facts: no
 
   tasks:
