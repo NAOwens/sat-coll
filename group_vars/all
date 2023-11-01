@@ -2,6 +2,8 @@
 
 coll_name: "{{ survey_coll_name }}"
 org_name: "My_Organization"
+inventory_source_name: Satellite
+inventory_name: "Satellite Ofam"
+#inventory_source_name: Sat6
+#inventory_name: "Satellite Inventory"
 #org_name: "Shadow Man"
-inventory_source_name: Sat6
-inventory_name: "Satellite Inventory"
